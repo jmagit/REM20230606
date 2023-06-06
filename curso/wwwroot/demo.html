@@ -1,15 +1,12 @@
-﻿@{
-    Layout = null;
-}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Estructura</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/curso.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="./curso.styles.css" asp-append-version="true" />
     <style>
         article {
             border: 1px solid;
@@ -18,26 +15,27 @@
 </head>
 <body>
 
-    <div class="container border p-3">
-        <div class="row border p-3 justify-content-around">
+    <div class="container border ">
+        <div class="row border p-3 mb-5 justify-content-around">
             <article class="col-3">item </article>
             <article class="col-auto">item </article>
         </div>
-        <div class="row border p-3 justify-content-end">
-            <article class="col-2">item </article>
+        <div class="row border gy-2 p-3 justify-content-end">
+            <article class="col-2">ej 1 </article>
             <article class="col-6">As shown above, Bootstrap generates a series of predefined container classes to help you build the layouts you desire. You may customize these predefined container classes by modifying the Sass map </article>
+            <article class="col-4">item </article>
             <article class="col-4">item </article>
         </div>
 
-        <div class="row border p-3 align-content-center">
-            <article class="col-12 col-lg-4 col-xl-2">item </article>
-            <article class="col-12 col-lg-8 col-xl-6">As shown above, Bootstrap generates a series of predefined container classes to help you build the layouts you desire. You may customize these predefined container classes by modifying the Sass map </article>
+        <div class="row border g-1 align-content-center m-1 m-md-5">
+            <article class="col-12 col-lg-4 col-xl-2">Ej 2 </article>
+            <article class="col-12 col-lg-8 col-xl-6 p-1 p-md-5">As shown above, Bootstrap generates a series of predefined container classes to help you build the layouts you desire. You may customize these predefined container classes by modifying the Sass map </article>
             <article class="col-12 col-lg-6 col-xl-4 align-self-end">item </article>
         </div>
         <div class="row border p-3 row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-around">
             <article class="col order-2">item 1</article>
             <article class="col order-1">item 2</article>
-            <article class="col order-2">item 3</article>
+            <article class="col offset-md-2 order-2">item 3</article>
             <article class="col order-5">item 4</article>
             <article class="col">item 5</article>
             <article class="col order-2">item 6</article>
@@ -55,7 +53,11 @@
     <div class="container-lg border">Tipo container-lg</div>
     <div class="container-xl border">Tipo container-xl</div>
     <div class="container-xxl border">Tipo container-xxl</div>
-
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="hstack gap-3">
+        <div class="bg-light border">Primer elemento</div>
+        <div class="bg-light border">Segundo elemento</div>
+        <div class="bg-light border">Tercer elemento</div>
+      </div>
+      
+    <script src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
