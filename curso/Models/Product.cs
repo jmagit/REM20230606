@@ -39,6 +39,7 @@ namespace curso.Models
         /// </summary>
         [Required]
         [StringLength(25)]
+        [Display(Name ="Product Number")]
         public string ProductNumber { get; set; }
         /// <summary>
         /// Product color.
@@ -79,6 +80,7 @@ namespace curso.Models
         /// Date the product was available for sale.
         /// </summary>
         [Column(TypeName = "datetime")]
+        [Display(Name = "Sell Start Date")]
         public DateTime SellStartDate { get; set; }
         /// <summary>
         /// Date the product was no longer available for sale.

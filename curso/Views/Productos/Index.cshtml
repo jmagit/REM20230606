@@ -16,13 +16,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th style="min-width: 10rem">
                 @Html.DisplayNameFor(model => model.ProductNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Color)
             </th>
-            <th>
+            <th class="text-break">
                 @Html.DisplayNameFor(model => model.StandardCost)
             </th>
             <th>
@@ -41,7 +41,8 @@
                 @Html.DisplayNameFor(model => model.SellEndDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiscontinuedDate)
+                <abbr class="d-md-none" title="@Html.DisplayNameFor(model => model.DiscontinuedDate)">dis</abbr>
+                <span class="d-none d-md-inline" >@Html.DisplayNameFor(model => model.DiscontinuedDate)</span>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rowguid)

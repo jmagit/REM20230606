@@ -24,6 +24,28 @@ namespace curso.Controllers
             var aWContext = _context.Products.Include(p => p.ProductCategory).Include(p => p.ProductModel).Take(20);
             return View(await aWContext.ToListAsync());
         }
+        public async Task<IActionResult> Listado(int num = 0, int rows = 15) {
+            var aWContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
+            ViewBag.Paginas = (int)Math.Ceiling((decimal)_context.Products.Count() / rows);
+            ViewBag.Pagina = num;
+            ViewBag.Filas = rows;
+
+            return View(await aWContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Photo(int? id) {
+            if(id == null || _context.Products == null) {
+                // this.StatusCode(404)
+                return NotFound();
+            }
+
+            var product = await _context.Products.Where(m => m.ProductId == id).Select(p => p.ThumbNailPhoto).FirstOrDefaultAsync();
+            if(product == null) {
+                return NotFound();
+            }
+
+            return File(product, "image/gif");
+        }
 
         // GET: Productos/Details/5
         public async Task<IActionResult> Details(int? id)

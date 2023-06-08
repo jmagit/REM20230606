@@ -1,0 +1,39 @@
+﻿@model IEnumerable<curso.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Create New","Create","Productos", htmlAttributes: new { @class = "btn btn-danger" })
+</p>
+<div class="container">
+    <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 gap-1">
+@foreach (var item in Model) {
+            <article class="col border rounded">
+                <img class="float-start me-3" src="@Href($"~/Productos/photo/{item.ProductId}")" alt="{item.Name}" width="80" height="50" />
+                <div class="h4">@Html.DisplayFor(modelItem => item.Name)</div> 
+                <div>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" title="Edit" class="btn btn-success"><i class="bi bi-pencil-fill"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="icon-link icon-link-hover">Delete <i class="bi bi-trash"></i></a>
+                </div>
+        </article>
+}
+    </section>
+    <nav>
+        <ul class="list-inline">
+             @for (var i = 0; i < ViewBag.Paginas; i++) {
+                <li class="list-inline-item"><a href="@Href($"~/Productos/listado?num={i}&rows={ViewBag.Filas}")">@(i + 1)</a> | </li>
+             }
+        </ul>
+        <ul class="list-inline">
+            @for(var i = 0; i < ViewBag.Paginas; i++) {
+                <li class="list-inline-item"><a asp-action="listado" asp-route-num="@i" asp-route-rows="@ViewBag.Filas">@(i + 1)</a> | </li>
+            }
+        </ul>
+    </nav>
+</div>
