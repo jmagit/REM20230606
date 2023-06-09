@@ -24,6 +24,23 @@
         </article>
 }
     </section>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item@(ViewBag.Pagina == 0 ? " disabled" : "")">
+                <a class="page-link" asp-action="listado" asp-route-page="0" asp-route-rows="@ViewBag.Filas" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for(var i = 0; i < ViewBag.Paginas; i++) {
+                <li class="page-item@(i == ViewBag.Pagina ? " active" : "")"><a class="page-link" asp-action="listado" asp-route-page="@i" asp-route-rows="@ViewBag.Filas">@(i + 1)</a></li>
+            }
+            <li class="page-item@(ViewBag.Pagina < (ViewBag.Paginas-1) ? "" : " disabled")">
+                <a class="page-link" asp-action="listado" asp-route-page="@(ViewBag.Paginas-1)" asp-route-rows="@ViewBag.Filas" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
     <nav>
         <ul class="list-inline">
              @for (var i = 0; i < ViewBag.Paginas; i++) {
@@ -32,7 +49,7 @@
         </ul>
         <ul class="list-inline">
             @for(var i = 0; i < ViewBag.Paginas; i++) {
-                <li class="list-inline-item"><a asp-action="listado" asp-route-num="@i" asp-route-rows="@ViewBag.Filas">@(i + 1)</a> | </li>
+                <li class="list-inline-item"><a asp-action="listado" asp-route-page="@i" asp-route-rows="@ViewBag.Filas">@(i + 1)</a> | </li>
             }
         </ul>
     </nav>

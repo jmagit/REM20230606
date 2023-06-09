@@ -24,10 +24,10 @@ namespace curso.Controllers
             var aWContext = _context.Products.Include(p => p.ProductCategory).Include(p => p.ProductModel).Take(20);
             return View(await aWContext.ToListAsync());
         }
-        public async Task<IActionResult> Listado(int num = 0, int rows = 15) {
-            var aWContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
+        public async Task<IActionResult> Listado(int page = 0, int rows = 15) {
+            var aWContext = _context.Products.Skip(page * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
             ViewBag.Paginas = (int)Math.Ceiling((decimal)_context.Products.Count() / rows);
-            ViewBag.Pagina = num;
+            ViewBag.Pagina = page;
             ViewBag.Filas = rows;
 
             return View(await aWContext.ToListAsync());
