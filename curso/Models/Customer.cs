@@ -41,7 +41,9 @@ namespace curso.Models
         /// First name of the person.
         /// </summary>
         [Required]
-        [StringLength(50)]
+        [StringLength(50, MinimumLength = 2)]
+        [Display(Name ="Nombre")]
+        [RegularExpression("[A-Z]+", ErrorMessage = "Tiene que estar en mayusculas")]
         public string FirstName { get; set; }
         /// <summary>
         /// Middle name or middle initial of the person.
@@ -57,7 +59,7 @@ namespace curso.Models
         /// <summary>
         /// Surname suffix. For example, Sr. or Jr.
         /// </summary>
-        [StringLength(10)]
+        [StringLength(10, MinimumLength = 2)]
         public string Suffix { get; set; }
         /// <summary>
         /// The customer&apos;s organization.
@@ -73,6 +75,7 @@ namespace curso.Models
         /// E-mail address for the person.
         /// </summary>
         [StringLength(50)]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
         /// <summary>
         /// Phone number associated with the person.
@@ -102,6 +105,7 @@ namespace curso.Models
         /// Date and time the record was last updated.
         /// </summary>
         [Column(TypeName = "datetime")]
+        [DataType(DataType.Date)]
         public DateTime ModifiedDate { get; set; }
 
         [InverseProperty("Customer")]

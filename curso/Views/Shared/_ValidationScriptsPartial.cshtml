@@ -1,2 +1,21 @@
 ﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $.validator.setDefaults({
+        //errorClass: "is-invalid",
+        //validClass: "is-valid",
+        highlight: function (element, errorClass) {
+            element.setCustomValidity(this.errorMap[element.id])
+            $(element.form).addClass('was-validated');
+        },
+        unhighlight: function (element, errorClass) {
+            element.setCustomValidity('')
+            $(element.form).addClass('was-validated');
+        },
+
+    });
+    $.validator.unobtrusive.options = {
+        errorClass: "is-invalid"
+    };
+
+</script>

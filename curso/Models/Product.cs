@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,8 @@ namespace curso.Models
         /// Name of the product.
         /// </summary>
         [Required]
-        [StringLength(50)]
+        [StringLength(50, MinimumLength = 2)]
+        [RegularExpression(@"([A-Z]|\d)+", ErrorMessage = "Debe estar en mayúsculas")]
         public string Name { get; set; }
         /// <summary>
         /// Unique product identification number.
@@ -50,6 +52,8 @@ namespace curso.Models
         /// Standard cost of the product.
         /// </summary>
         [Column(TypeName = "money")]
+        [DisplayName("Standard Cost")]
+        [DataType(DataType.Currency)]
         public decimal StandardCost { get; set; }
         /// <summary>
         /// Selling price.

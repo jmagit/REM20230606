@@ -22,7 +22,7 @@ namespace curso.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
+                          View(await _context.Customers.Take(10).ToListAsync()) :
                           Problem("Entity set 'AWContext.Customers'  is null.");
         }
 
